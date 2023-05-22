@@ -2,11 +2,12 @@
 Es una aplicacion como Mockups
 
 Usuarios1:
-admin
-cris123
+User: admin
+contraseña: cris123
+
 Usuario2:
-cristian
-basoalto123
+User: cristian
+Contraseña: basoalto123
 
 para iniciar el proyecto hay que ejecutar:
 
