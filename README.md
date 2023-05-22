@@ -1,5 +1,12 @@
 # recetasAPP
 Es una aplicacion como Mockups
+Usuarios1:
+admin
+cris123
+Usuario2:
+cristian
+basoalto123
+
 para iniciar el proyecto hay que ejecutar:
 
 npm install
