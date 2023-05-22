@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      RecetasAPP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="isLoggedIn; else errorTemplate">
+    <ion-list class="recetas-list">
+      <ion-item *ngFor="let receta of favoritos">
+        <a [routerLink]="['/receta', receta.idMeal]" [state]="{ receta: receta }" class="receta-link">
+          <div class="receta-container">
+            <ion-thumbnail slot="start">
+              <img [src]="receta.strMealThumb" alt="Imagen de la receta">
+            </ion-thumbnail>
+            <ion-label class="receta-label">{{ receta.strMeal }}</ion-label>
+          </div>
+        </a>
+        <ion-button slot="end" color="danger" (click)="eliminarFavorito(receta);">
+          Eliminar
+        </ion-button>
+      </ion-item>
+      <ion-item *ngIf="favoritos.length === 0">
+        <ion-label class="empty-message">No tienes recetas favoritas añadidas.</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-template #errorTemplate>
+    <ion-text color="danger" class="error-message">
+      Por favor, inicia sesión para ver la lista de recetas favoritas.
+    </ion-text>
+  </ng-template>
+</ion-content>
+

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ receta?.strMeal }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="receta" class="recipe-card">
+    <img [src]="receta.strMealThumb" alt="{{ receta.strMeal }}" class="recipe-image">
+    <ion-card-content>
+      <h3 class="recipe-heading">Detalles de la receta</h3>
+      <p class="recipe-instructions">{{ receta.strInstructions }}</p>
+      <h3 class="recipe-heading">Ingredientes</h3>
+      <ul class="recipe-ingredients">
+        <li *ngFor="let ingredient of getIngredients()" class="recipe-ingredient">{{ ingredient }}</li>
+      </ul>
+      <h3 class="recipe-heading">Clasificación</h3>
+      <p class="recipe-category">{{ receta.strCategory }}</p>
+      <h3 class="recipe-heading">Video</h3>
+      <div *ngIf="urlVideo" class="video-container">
+        <iframe [src]="urlVideo" frameborder="0" allowfullscreen class="video-iframe"></iframe>
+      </div>
+    </ion-card-content>
+    <ion-button (click)="agregarFavorito()" expand="full" color="primary">Agregar a favoritos</ion-button>
+  </ion-card>
+</ion-content>
