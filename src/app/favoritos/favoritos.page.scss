@@ -1,0 +1,29 @@
+.receta-link {
+    text-decoration: none;
+  }
+  
+  .receta-link:hover {
+    text-decoration: none;
+  }
+  
+  .receta-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .receta-container ion-thumbnail {
+    width: 100px; 
+    height: 100px; 
+    margin-right: 8px;
+    margin-top: 20px;
+  }
+  
+  .receta-container ion-label {
+    margin-bottom: 0;
+  }
+  
+  .receta-link ion-button {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ receta?.strMeal }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="receta" class="recipe-card">
+    <ion-row>
+      <ion-col size="9">
+        <img [src]="receta.strMealThumb" alt="{{ receta.strMeal }}" class="recipe-image">
+      </ion-col>
+      <ion-col size="3" class="favorite-icon-container">
+        <div class="favorite-container">
+          <ion-icon name="heart-outline" class="favorite-icon" [class.is-favorite]="esFavorito" (click)="agregarFavorito()"></ion-icon>
+          <span class="favorite-text">{{ esFavorito ? 'Quitar de favoritos' : 'Añadir a favoritos' }}</span>
+        </div>
+        
+      </ion-col>
+    </ion-row>
+
+    <ion-card-content>
+      <h2 class="recipe-heading">Detalles de la receta</h2>
+      <p class="recipe-instructions">{{ receta.strInstructions }}</p>
+
+      <h2 class="recipe-heading">Ingredientes</h2>
+      <ul class="recipe-ingredients">
+        <li *ngFor="let ingredient of getIngredients()" class="recipe-ingredient">{{ ingredient }}</li>
+      </ul>
+
+      <h2 class="recipe-heading">Clasificación</h2>
+      <p class="recipe-category">{{ receta.strCategory }}</p>
+
+      <h2 class="recipe-heading">Video</h2>
+      <div *ngIf="urlVideo" class="video-container">
+        <iframe [src]="urlVideo" frameborder="0" allowfullscreen class="video-iframe"></iframe>
+      </div>
+      <h2 class="recipe-heading">Comentarios</h2>
+      <ion-item *ngFor="let comentario of comentariosReceta">
+        <ion-label>
+          <h2>{{ comentario.username }}</h2>
+          <p>{{ comentario.comment }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="editarComentario(comentario)">
+            Editar
+          </ion-button>
+          <ion-button (click)="eliminarComentario(comentario)">
+            Eliminar
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <h2 class="recipe-heading">Añadir Comentario</h2>
+      <ion-item>
+        <ion-textarea [(ngModel)]="newComment" placeholder="Escribe tu comentario"></ion-textarea>
+      </ion-item>
+      <ion-button (click)="agregarComentario()" expand="full" color="primary">Agregar Comentario</ion-button>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
